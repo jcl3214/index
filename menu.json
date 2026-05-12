@@ -1,0 +1,98 @@
+{
+  "categories": [
+    {
+      "category": "肉類",
+      "emoji": "🥩",
+      "items": [
+        {"name": "隔間肉", "price": 55, "note": ""},
+        {"name": "豬舌", "price": 65, "note": ""},
+        {"name": "豬肉片", "price": 50, "note": ""},
+        {"name": "豬耳朵", "price": 45, "note": ""},
+        {"name": "大腸", "price": 40, "note": ""},
+        {"name": "粉腸", "price": 40, "note": ""},
+        {"name": "鴨胗", "price": 30, "note": ""},
+        {"name": "豬皮", "price": 30, "note": ""}
+      ]
+    },
+    {
+      "category": "蔬果/青菜",
+      "emoji": "🥦",
+      "items": [
+        {"name": "玉米筍", "price": 40, "note": ""},
+        {"name": "黑木耳", "price": 30, "note": ""},
+        {"name": "空心菜", "price": 30, "note": ""},
+        {"name": "青花菜", "price": 30, "note": ""},
+        {"name": "大陸妹", "price": 30, "note": ""},
+        {"name": "高麗菜", "price": 30, "note": ""},
+        {"name": "娃娃菜", "price": 45, "note": ""},
+        {"name": "青椒", "price": 30, "note": ""},
+        {"name": "四季豆", "price": 30, "note": ""},
+        {"name": "小黃瓜", "price": 30, "note": ""},
+        {"name": "水蓮", "price": 30, "note": ""},
+        {"name": "白蘿蔔", "price": 10, "note": ""}
+      ]
+    },
+    {
+      "category": "菇類",
+      "emoji": "🍄",
+      "items": [
+        {"name": "香菇", "price": 30, "note": ""},
+        {"name": "杏包菇", "price": 30, "note": ""},
+        {"name": "金針菇", "price": 30, "note": ""}
+      ]
+    },
+    {
+      "category": "麵類",
+      "emoji": "🍜",
+      "items": [
+        {"name": "不倒翁拉麵", "price": 40, "note": ""},
+        {"name": "烏龍麵", "price": 30, "note": ""},
+        {"name": "冬粉", "price": 25, "note": ""},
+        {"name": "粗冬粉", "price": 25, "note": ""},
+        {"name": "意麵", "price": 25, "note": ""},
+        {"name": "關廟麵", "price": 25, "note": ""},
+        {"name": "泡麵", "price": 15, "note": ""}
+      ]
+    },
+    {
+      "category": "豆類",
+      "emoji": "🫘",
+      "items": [
+        {"name": "素雞", "price": 25, "note": ""},
+        {"name": "黑豆干", "price": 30, "note": ""},
+        {"name": "小豆干", "price": 25, "note": "3個"},
+        {"name": "百頁豆腐", "price": 20, "note": ""},
+        {"name": "炸豆包", "price": 20, "note": ""},
+        {"name": "花干", "price": 20, "note": ""},
+        {"name": "豆皮", "price": 15, "note": ""},
+        {"name": "小豆皮", "price": 15, "note": ""}
+      ]
+    },
+    {
+      "category": "火鍋料/其他",
+      "emoji": "🍡",
+      "items": [
+        {"name": "手工貢丸", "price": 25, "note": "3個"},
+        {"name": "菜捲", "price": 30, "note": ""},
+        {"name": "黑輪片", "price": 30, "note": ""},
+        {"name": "鱈魚燒", "price": 30, "note": ""},
+        {"name": "餛飩", "price": 30, "note": "5個"},
+        {"name": "芋籤", "price": 20, "note": ""},
+        {"name": "魚餃", "price": 25, "note": "3個"},
+        {"name": "水晶餃", "price": 15, "note": "2個"},
+        {"name": "鑫鑫腸", "price": 20, "note": "3個"},
+        {"name": "蟹肉棒", "price": 15, "note": "3個"},
+        {"name": "甜不辣", "price": 20, "note": "2個"},
+        {"name": "小熱狗", "price": 15, "note": "2個"},
+        {"name": "竹輪", "price": 15, "note": ""},
+        {"name": "黑輪", "price": 10, "note": "1個"},
+        {"name": "海帶", "price": 10, "note": "1個"},
+        {"name": "起司魚豆腐", "price": 10, "note": "1個"},
+        {"name": "魚包蛋", "price": 25, "note": "2個"},
+        {"name": "鳥蛋", "price": 10, "note": "2個"},
+        {"name": "小脆丸", "price": 10, "note": ""},
+        {"name": "米血", "price": 20, "note": ""}
+      ]
+    }
+  ]
+}
