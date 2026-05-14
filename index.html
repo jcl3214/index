@@ -120,6 +120,7 @@
   .copy-toast{position:fixed;bottom:110px;left:50%;transform:translateX(-50%);background:#1C1C1E;color:white;border-radius:50px;padding:11px 24px;font-size:14px;font-weight:700;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap;}
   .copy-toast.show{opacity:1;}
   .loading-overlay{position:fixed;inset:0;background:rgba(255,248,240,0.95);display:flex;align-items:center;justify-content:center;z-index:300;font-size:18px;font-weight:700;color:var(--red);}
+  .warning-text{color:#D62B2B; font-size:14px; font-weight:700; text-align:center; margin-bottom:12px; text-shadow: 0 2px 4px rgba(0,0,0,0.6); -webkit-text-stroke: 0.8px #fff;}
 </style>
 </head>
 <body>
@@ -167,8 +168,7 @@
     <div class="option-row">
       <div class="option-label">🥬 酸菜</div>
       <div class="option-chips">
-        <button class="chip selected" onclick="selectOption('pickle',this,'正常')">正常</button>
-        <button class="chip" onclick="selectOption('pickle',this,'要酸菜')">要酸菜</button>
+        <button class="chip selected" onclick="selectOption('pickle',this,'要酸菜')">要酸菜</button>
         <button class="chip" onclick="selectOption('pickle',this,'不要酸菜')">不要酸菜</button>
       </div>
     </div>
@@ -202,12 +202,13 @@
 <div class="modal" id="successModal">
   <div class="modal-box">
     <div class="modal-icon">🎉</div>
-    <h2>訂單完成！</h2>
+    <h2>明細建立！</h2>
     <p class="modal-sub">請複製後傳給店家</p>
     <div class="order-summary" id="orderSummary"></div>
     <div class="contact-line">
       📱 Line：<b>@392okuyq</b><br>Google：<b>@mikaloovi</b>
     </div>
+    <p class="warning-text">⚠️請複製文字傳給店家完成訂單！</p>
     <button class="copy-btn" onclick="copyOrder()">📋 複製訂單文字</button>
     <button class="reset-btn" onclick="closeSuccess()">🔄 重新點餐</button>
   </div>
@@ -233,7 +234,7 @@ const DEFAULT_MENU = [
 let MENU = [];
 let soldout = {};
 let cart = {};
-let opts = {spice:'不辣', pickle:'正常', salt:'正常', gift:false};
+let opts = {spice:'不辣', pickle:'要酸菜', salt:'正常', gift:false};
 let activeCategory = '全部';
 let adminUnlocked = false;
 let lastOrderText = '';
