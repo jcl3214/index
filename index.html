@@ -85,7 +85,7 @@
   .summary-datetime{font-size:12px;color:var(--muted);margin-top:3px;}
   .summary-divider{border:none;border-top:1.5px dashed #D0D0D0;margin:12px 0;}
   .summary-items{display:flex;flex-direction:column;gap:6px;}
-  .summary-row{display:grid;grid-template-columns:1fr auto auto;gap:0 10px;align-items:baseline;font-size:14px;}
+  .summary-row{display:grid;grid:template-columns:1fr auto auto;gap:0 10px;align-items:baseline;font-size:14px;}
   .s-name{font-weight:700;word-break:break-all;}
   .s-qty{color:var(--muted);font-size:13px;white-space:nowrap;}
   .s-amt{font-weight:900;white-space:nowrap;text-align:right;}
@@ -248,18 +248,25 @@ let opts = {spice:'不辣', pickle:'要酸菜', salt:'正常', gift:false};
 let activeCategory = '全部';
 let adminUnlocked = false;
 let lastOrderText = '';
-function loadSoldoutFromStorage() {
+async function loadSoldout() {
   try {
-    const saved = localStorage.getItem('soldout');
-    if (saved) soldout = JSON.parse(saved);
-  } catch(e) {}
-}
-function saveSoldoutToStorage() {
-  localStorage.setItem('soldout', JSON.stringify(soldout));
+    // 先從 localStorage 載入（業主本機優先）
+    const local = localStorage.getItem('soldout');
+    if (local) soldout = JSON.parse(local);
+    // 再從 soldout.json 載入（全站共用）
+    const res = await fetch('soldout.json', {cache: 'no-store'});
+    if (res.ok) {
+      const serverSoldout = await res.json();
+      // 合併：localStorage 優先覆蓋
+      soldout = { ...serverSoldout, ...soldout };
+    }
+  } catch(e) {
+    console.warn('載入 soldout 失敗', e);
+  }
 }
 async function loadMenu() {
   const container = document.getElementById('menuContainer');
-  loadSoldoutFromStorage();
+  await loadSoldout();
   try {
     const res = await fetch('menu.json', {cache: 'no-store'});
     if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -518,7 +525,8 @@ function toggleItem(name) {
   const lbl = document.getElementById(`lbl-${esc}`);
   if (lbl) { lbl.textContent = off ? '下架' : '供應中'; lbl.classList.toggle('off-label', off); }
   renderMenu();
-  saveSoldoutToStorage();
+  // 儲存到 localStorage（業主本機）
+  localStorage.setItem('soldout', JSON.stringify(soldout));
 }
 function closeAdmin() {
   document.getElementById('adminPanel').classList.remove('open');
