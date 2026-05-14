@@ -1,3 +1,8 @@
 {
-  "隔間肉": true
+  "隔間肉": false,
+  "小脆丸": false,
+  "鳥蛋": false,
+  "魚包蛋": false,
+  "起司魚豆腐": false,
+  "海帶": false
 }
