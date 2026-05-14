@@ -121,6 +121,7 @@
   .copy-toast.show{opacity:1;}
   .loading-overlay{position:fixed;inset:0;background:rgba(255,248,240,0.95);display:flex;align-items:center;justify-content:center;z-index:300;font-size:18px;font-weight:700;color:var(--red);}
   .warning-text{color:#D62B2B; font-size:14px; font-weight:700; text-align:center; margin-bottom:12px; text-shadow: 0 2px 4px rgba(0,0,0,0.6);}
+  .save-btn{background:#28a745;color:white;border:none;border-radius:12px;padding:12px 20px;font-size:15px;font-weight:700;margin-top:16px;width:100%;cursor:pointer;}
 </style>
 </head>
 <body>
@@ -222,6 +223,15 @@
   <div id="adminContent"></div>
 </div>
 <div class="copy-toast" id="copyToast">✅ 已複製到剪貼簿</div>
+<div class="modal" id="uploadModal">
+  <div class="modal-box">
+    <h2>準備上傳到 GitHub</h2>
+    <p style="margin:12px 0;font-size:14px;color:#555;">請複製以下 soldout.json 內容，然後對我說：<br><b>「幫我上傳更新資料到GitHub」</b></p>
+    <textarea id="soldoutJson" style="width:100%;height:180px;font-family:monospace;font-size:12px;border:1px solid #ccc;border-radius:8px;padding:10px;"></textarea>
+    <button class="save-btn" onclick="copySoldoutJson()">複製 JSON 內容</button>
+    <button onclick="closeUploadModal()" style="margin-top:10px;background:#6c757d;color:white;border:none;border-radius:12px;padding:10px 20px;width:100%;">關閉</button>
+  </div>
+</div>
 <script>
 const DEFAULT_MENU = [
   {category:'肉類',emoji:'🥩',items:[{name:'隔間肉',price:55},{name:'豬舌',price:65},{name:'豬肉片',price:50},{name:'豬耳朵',price:45},{name:'大腸',price:40},{name:'粉腸',price:40},{name:'鴨胗',price:30},{name:'豬皮',price:30}]},
@@ -238,8 +248,18 @@ let opts = {spice:'不辣', pickle:'要酸菜', salt:'正常', gift:false};
 let activeCategory = '全部';
 let adminUnlocked = false;
 let lastOrderText = '';
+function loadSoldoutFromStorage() {
+  try {
+    const saved = localStorage.getItem('soldout');
+    if (saved) soldout = JSON.parse(saved);
+  } catch(e) {}
+}
+function saveSoldoutToStorage() {
+  localStorage.setItem('soldout', JSON.stringify(soldout));
+}
 async function loadMenu() {
   const container = document.getElementById('menuContainer');
+  loadSoldoutFromStorage();
   try {
     const res = await fetch('menu.json', {cache: 'no-store'});
     if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -461,8 +481,27 @@ function openAdmin() {
       </div>`;
     });
   });
+  html += `<button class="save-btn" onclick="prepareUploadSoldout()">💾 儲存變更並準備上傳到 GitHub</button>`;
   document.getElementById('adminContent').innerHTML = html;
   openAdminPanel();
+}
+function prepareUploadSoldout() {
+  const jsonStr = JSON.stringify(soldout, null, 2);
+  document.getElementById('soldoutJson').value = jsonStr;
+  document.getElementById('uploadModal').classList.add('open');
+}
+function copySoldoutJson() {
+  const ta = document.getElementById('soldoutJson');
+  ta.select();
+  document.execCommand('copy');
+  const toast = document.createElement('div');
+  toast.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#28a745;color:white;padding:8px 16px;border-radius:20px;font-size:13px;z-index:999;';
+  toast.textContent = '✅ 已複製！請對我說「幫我上傳更新資料到GitHub」';
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
+function closeUploadModal() {
+  document.getElementById('uploadModal').classList.remove('open');
 }
 function openAdminPanel() {
   document.getElementById('adminOverlay').classList.add('open');
@@ -479,6 +518,7 @@ function toggleItem(name) {
   const lbl = document.getElementById(`lbl-${esc}`);
   if (lbl) { lbl.textContent = off ? '下架' : '供應中'; lbl.classList.toggle('off-label', off); }
   renderMenu();
+  saveSoldoutToStorage();
 }
 function closeAdmin() {
   document.getElementById('adminPanel').classList.remove('open');
