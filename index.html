@@ -13,6 +13,7 @@
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
   body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding-bottom:130px;}
 
+  /* HEADER */
   .header{background:var(--red);padding:14px 16px 0;position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.2);}
   .header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
   .shop-name{color:var(--yellow);font-size:21px;font-weight:900;letter-spacing:2px;}
@@ -25,10 +26,12 @@
   .tab{flex-shrink:0;background:rgba(255,255,255,.2);color:white;border:none;border-radius:20px;padding:7px 13px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;}
   .tab.active{background:var(--yellow);color:var(--red-dark);}
 
+  /* SEARCH */
   .search-bar{padding:12px 16px;}
   .search-bar input{width:100%;padding:10px 16px;border-radius:50px;border:2px solid var(--border);font-size:15px;font-family:inherit;outline:none;background:white;}
   .search-bar input:focus{border-color:var(--red);}
 
+  /* MENU */
   .section-title{background:var(--red);color:var(--yellow);font-size:14px;font-weight:900;padding:8px 16px;letter-spacing:2px;}
   .item-list{padding:8px 12px;display:flex;flex-direction:column;gap:8px;}
   .item-card{background:white;border-radius:14px;padding:13px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 5px rgba(0,0,0,.06);border:1.5px solid transparent;transition:border .2s;}
@@ -40,6 +43,7 @@
   .item-price{font-size:16px;font-weight:900;color:var(--red);margin-right:12px;white-space:nowrap;}
   .soldout-badge{font-size:11px;font-weight:900;color:white;background:#999;border-radius:6px;padding:2px 7px;margin-right:10px;white-space:nowrap;}
 
+  /* COUNTER */
   .counter{display:flex;align-items:center;gap:8px;}
   .counter-btn{width:34px;height:34px;border-radius:50%;border:none;font-size:20px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;transition:transform .1s;}
   .counter-btn:active{transform:scale(.86);}
@@ -47,6 +51,7 @@
   .btn-plus{background:var(--red);color:white;}
   .counter-qty{font-size:16px;font-weight:900;min-width:22px;text-align:center;}
 
+  /* PANELS */
   .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;}
   .overlay.open{display:block;}
   .panel{position:fixed;bottom:0;left:0;right:0;background:white;border-radius:24px 24px 0 0;max-height:85vh;overflow-y:auto;z-index:201;transform:translateY(100%);transition:transform .35s cubic-bezier(.32,.72,0,1);padding-bottom:env(safe-area-inset-bottom,16px);}
@@ -55,12 +60,14 @@
   .panel-header h2{font-size:18px;font-weight:900;}
   .close-btn{background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);padding:4px;}
 
+  /* CART */
   .cart-items{padding:4px 20px 8px;}
   .cart-item{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);}
   .cart-item-name{font-size:15px;font-weight:700;}
   .cart-item-sub{font-size:13px;color:var(--muted);margin-top:3px;}
   .cart-item-amount{font-size:15px;font-weight:900;color:var(--red);min-width:52px;text-align:right;}
 
+  /* OPTIONS */
   .order-options{padding:14px 20px 4px;border-top:1px solid var(--border);}
   .order-options h3{font-size:13px;font-weight:900;margin-bottom:12px;color:var(--muted);letter-spacing:1px;}
   .option-row{margin-bottom:14px;}
@@ -69,6 +76,7 @@
   .chip{padding:7px 15px;border-radius:20px;border:1.5px solid var(--border);background:white;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .15s;color:var(--text);}
   .chip.selected{background:var(--red);color:white;border-color:var(--red);}
 
+  /* CART FOOTER */
   .cart-footer{padding:14px 20px 6px;border-top:2px solid var(--border);position:sticky;bottom:0;background:white;}
   .total-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
   .total-label{font-size:15px;font-weight:700;}
@@ -77,6 +85,7 @@
   .order-btn:active{background:var(--red-dark);}
   .order-btn:disabled{background:#CCC;cursor:not-allowed;}
 
+  /* BOTTOM BAR */
   .bottom-bar{position:fixed;bottom:0;left:0;right:0;background:white;padding:12px 16px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));box-shadow:0 -2px 14px rgba(0,0,0,.1);display:flex;align-items:center;justify-content:space-between;gap:12px;}
   .bar-info{flex:1;}
   .bar-items{font-size:13px;color:var(--muted);}
@@ -84,6 +93,7 @@
   .bar-btn{background:var(--red);color:white;border:none;border-radius:14px;padding:14px 22px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit;white-space:nowrap;}
   .bar-btn:disabled{background:#CCC;cursor:not-allowed;}
 
+  /* SUCCESS MODAL */
   .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;align-items:flex-end;justify-content:center;}
   .modal.open{display:flex;}
   .modal-box{background:white;border-radius:24px 24px 0 0;padding:28px 22px 32px;width:100%;max-height:90vh;overflow-y:auto;}
@@ -91,6 +101,7 @@
   .modal-box h2{font-size:20px;font-weight:900;text-align:center;margin-bottom:5px;}
   .modal-sub{font-size:13px;color:var(--muted);text-align:center;margin-bottom:18px;}
 
+  /* ORDER SUMMARY */
   .order-summary{background:#FAFAFA;border-radius:14px;padding:18px 16px;margin-bottom:16px;border:1px solid var(--border);}
   .summary-header{text-align:center;margin-bottom:14px;}
   .summary-shop-name{font-size:17px;font-weight:900;letter-spacing:2px;}
@@ -114,6 +125,16 @@
     letter-spacing:1px;
     margin-bottom:14px;
     padding:10px 8px;
+    text-shadow:
+      0 1px 0 #fff,
+      0 2px 0 #f0a0a0,
+      0 3px 0 #d88,
+      1px 0 0 #fff,
+      -1px 0 0 #fff,
+      1px 1px 0 #f0a0a0,
+      -1px -1px 0 #f0a0a0;
+    -webkit-text-stroke: 0.8px #a81e1e;
+    filter: drop-shadow(0 2px 3px rgba(180,0,0,0.18));
   }
   .contact-line{font-size:13px;color:var(--muted);text-align:center;margin-bottom:14px;line-height:2;}
   .contact-line b{color:var(--text);}
@@ -121,6 +142,7 @@
   .copy-btn:active{background:#444;}
   .reset-btn{width:100%;background:var(--red);color:white;border:none;border-radius:14px;padding:14px;font-size:15px;font-weight:900;cursor:pointer;font-family:inherit;}
 
+  /* ADMIN */
   .admin-section-title{font-size:12px;font-weight:900;color:var(--muted);letter-spacing:2px;padding:14px 20px 6px;background:var(--bg);}
   .admin-item{display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--border);background:white;}
   .admin-item-name{font-size:15px;font-weight:700;}
@@ -134,6 +156,7 @@
   .toggle-btn::after{content:'';position:absolute;top:3px;right:3px;width:22px;height:22px;border-radius:50%;background:white;transition:right .25s,left .25s;}
   .toggle-btn.off::after{right:auto;left:3px;}
 
+  /* LOGIN */
   .login-form{padding:28px 22px;}
   .login-form p{font-size:14px;color:var(--muted);margin-bottom:18px;text-align:center;}
   .login-form input{width:100%;padding:14px 16px;border-radius:14px;border:2px solid var(--border);font-size:20px;font-family:inherit;outline:none;margin-bottom:12px;text-align:center;letter-spacing:6px;}
@@ -148,6 +171,7 @@
 </head>
 <body>
 
+<!-- HEADER -->
 <div class="header">
   <div class="header-top">
     <div class="shop-name">🍢 健康魯味</div>
@@ -167,6 +191,7 @@
 
 <div id="menuContainer"></div>
 
+<!-- BOTTOM BAR -->
 <div class="bottom-bar">
   <div class="bar-info">
     <div class="bar-items" id="barItems">尚未選購</div>
@@ -175,6 +200,7 @@
   <button class="bar-btn" id="barBtn" onclick="openCart()" disabled>查看訂單</button>
 </div>
 
+<!-- CART -->
 <div class="overlay" id="cartOverlay" onclick="closeCart()"></div>
 <div class="panel" id="cartPanel">
   <div class="panel-header">
@@ -234,6 +260,7 @@
   </div>
 </div>
 
+<!-- SUCCESS MODAL -->
 <div class="modal" id="successModal">
   <div class="modal-box">
     <div class="modal-icon">🎉</div>
@@ -249,6 +276,7 @@
   </div>
 </div>
 
+<!-- ADMIN -->
 <div class="overlay" id="adminOverlay" onclick="closeAdmin()"></div>
 <div class="panel" id="adminPanel">
   <div class="panel-header">
@@ -261,6 +289,7 @@
 <div class="copy-toast" id="copyToast">✅ 已複製！返回 Line 貼上傳送</div>
 
 <script>
+// ══ MENU DATA ════════════════════════════════
 const MENU = [
   {category:'肉類',emoji:'🥩',items:[
     {name:'隔間肉',price:55},
@@ -269,11 +298,11 @@ const MENU = [
     {name:'豬耳朵',price:45},
     {name:'大腸',price:40},
     {name:'粉腸',price:40},
-    {name:'鴨脛',price:30},
+    {name:'鴨胗',price:30},
     {name:'豬皮',price:30},
   ]},
   {category:'蔬果/青菜',emoji:'🥦',items:[
-    {name:'玉米笋',price:40},
+    {name:'玉米筍',price:40},
     {name:'黑木耳',price:30},
     {name:'空心菜',price:30},
     {name:'青花菜',price:30},
@@ -314,8 +343,8 @@ const MENU = [
     {name:'手工貢丸',price:25,note:'3個'},
     {name:'菜捲',price:30},
     {name:'黑輪片',price:30},
-    {name:'鱌魚燒',price:30},
-    {name:'餙飽',price:30,note:'5個'},
+    {name:'鱈魚燒',price:30},
+    {name:'餛飩',price:30,note:'5個'},
     {name:'芋籤',price:20},
     {name:'魚餃',price:25,note:'3個'},
     {name:'水晶餃',price:15,note:'2個'},
@@ -334,14 +363,16 @@ const MENU = [
   ]},
 ];
 
-const ADMIN_PASS = '0000';
-let soldout = { '娃娃菜': true };
-let cart = {};
-let opts = {spice:'不辣', pickle:'正常', salt:'正常', gift:false};
+// ══ STATE ════════════════════════════════════
+const ADMIN_PASS = '0000';  // ← 修改密碼
+let soldout = {};
+let cart    = {};
+let opts    = {spice:'不辣', pickle:'正常', salt:'正常', gift:false};
 let activeCategory = '全部';
-let adminUnlocked = false;
-let lastOrderText = '';
+let adminUnlocked  = false;
+let lastOrderText  = '';
 
+// ══ TABS ════════════════════════════════════
 function buildTabs() {
   const cats = ['全部', ...MENU.map(c=>c.category)];
   document.getElementById('tabs').innerHTML = cats.map(c=>
@@ -353,6 +384,7 @@ function setCategory(cat) {
   activeCategory = cat; buildTabs(); renderMenu();
 }
 
+// ══ MENU ═════════════════════════════════════
 function renderMenu() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   const con = document.getElementById('menuContainer');
@@ -387,6 +419,7 @@ function renderMenu() {
   con.innerHTML = html||`<div class="empty">😕 找不到「${q}」的餐點</div>`;
 }
 
+// ══ CART LOGIC ═══════════════════════════════
 function updateQty(name, price, delta) {
   if (soldout[name]) return;
   if (!cart[name]) cart[name]={name,price,qty:0};
@@ -416,6 +449,7 @@ function toggleGift(el){
   el.classList.toggle('selected', opts.gift);
 }
 
+// ══ OPEN/CLOSE CART ══════════════════════════
 function openCart(){
   renderCartPanel();
   document.getElementById('cartOverlay').classList.add('open');
@@ -449,6 +483,7 @@ function renderCartPanel(){
   document.getElementById('orderBtn').disabled=items.length===0;
 }
 
+// ══ SUBMIT ORDER ═════════════════════════════
 function submitOrder(){
   const items=Object.values(cart);
   if(!items.length) return;
@@ -458,6 +493,7 @@ function submitOrder(){
   const dateStr=now.toLocaleDateString('zh-TW',{month:'long',day:'numeric'});
   const timeStr=now.toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'});
 
+  // ── HTML SUMMARY ──────────────────────
   const rowsHtml=items.map(i=>`
     <div class="summary-row">
       <span class="s-name">${i.name}</span>
@@ -489,6 +525,7 @@ function submitOrder(){
     </div>
     ${noteTag}`;
 
+  // ── PLAIN TEXT (for copy) ─────────────
   const maxLen=Math.max(...items.map(i=>[...i.name].length));
   const pad=(s,n)=>{const l=[...s].length;return s+' '.repeat(Math.max(0,n-l));};
   const itemLines=items.map(i=>
@@ -516,7 +553,7 @@ function copyOrder(){
   const doToast=()=>{
     const t=document.getElementById('copyToast');
     t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'),2200);
+    setTimeout(()=>{t.classList.remove('show');window.close();},2200);
   };
   if(navigator.clipboard){
     navigator.clipboard.writeText(lastOrderText).then(doToast).catch(fallbackCopy);
@@ -542,6 +579,7 @@ function closeSuccess(){
   updateBottomBar();updateCartCount();renderMenu();
 }
 
+// ══ ADMIN ════════════════════════════════════
 function openAdminLogin(){
   if(adminUnlocked){openAdmin();return;}
   document.getElementById('adminContent').innerHTML=`
@@ -593,6 +631,7 @@ function toggleItem(name){
   soldout[name]=!soldout[name];
   const off=soldout[name];
   if(off&&cart[name]){delete cart[name];updateBottomBar();updateCartCount();}
+  // Update admin row
   const esc=CSS.escape(name);
   document.getElementById(`adm-${esc}`)?.classList.toggle('is-off',off);
   const tog=document.getElementById(`tog-${esc}`);
@@ -606,6 +645,7 @@ function closeAdmin(){
   document.getElementById('adminOverlay').classList.remove('open');
 }
 
+// ══ INIT ═════════════════════════════════════
 buildTabs();renderMenu();updateBottomBar();
 </script>
 </body>
