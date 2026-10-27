@@ -289,7 +289,7 @@
 <div class="copy-toast" id="copyToast">✅ 已複製！返回 Line 貼上傳送</div>
 
 <script>
-// ══ MENU DATA ════════════════════════════════
+// ══ MENU DATA ═════════════════════════════════
 const MENU = [
   {category:'肉類',emoji:'🥩',items:[
     {name:'隔間肉',price:55},
@@ -298,7 +298,7 @@ const MENU = [
     {name:'豬耳朵',price:45},
     {name:'大腸',price:40},
     {name:'粉腸',price:40},
-    {name:'鴨胗',price:30},
+    {name:'鴨脓',price:30},
     {name:'豬皮',price:30},
   ]},
   {category:'蔬果/青菜',emoji:'🥦',items:[
@@ -343,8 +343,8 @@ const MENU = [
     {name:'手工貢丸',price:25,note:'3個'},
     {name:'菜捲',price:30},
     {name:'黑輪片',price:30},
-    {name:'鱈魚燒',price:30},
-    {name:'餛飩',price:30,note:'5個'},
+    {name:'鱬魚燒',price:30},
+    {name:'餕餅',price:30,note:'5個'},
     {name:'芋籤',price:20},
     {name:'魚餃',price:25,note:'3個'},
     {name:'水晶餃',price:15,note:'2個'},
@@ -363,16 +363,16 @@ const MENU = [
   ]},
 ];
 
-// ══ STATE ════════════════════════════════════
+// ══ STATE ═════════════════════════════════════════
 const ADMIN_PASS = '0000';  // ← 修改密碼
-let soldout = {};
+let soldout = { '娃娃菜': true };
 let cart    = {};
 let opts    = {spice:'不辣', pickle:'正常', salt:'正常', gift:false};
 let activeCategory = '全部';
 let adminUnlocked  = false;
 let lastOrderText  = '';
 
-// ══ TABS ════════════════════════════════════
+// ══ TABS ═════════════════════════════════════════
 function buildTabs() {
   const cats = ['全部', ...MENU.map(c=>c.category)];
   document.getElementById('tabs').innerHTML = cats.map(c=>
@@ -384,7 +384,7 @@ function setCategory(cat) {
   activeCategory = cat; buildTabs(); renderMenu();
 }
 
-// ══ MENU ═════════════════════════════════════
+// ══ MENU ═════════════════════════════════════════
 function renderMenu() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   const con = document.getElementById('menuContainer');
@@ -419,7 +419,7 @@ function renderMenu() {
   con.innerHTML = html||`<div class="empty">😕 找不到「${q}」的餐點</div>`;
 }
 
-// ══ CART LOGIC ═══════════════════════════════
+// ══ CART LOGIC ═══════════════════════════════════
 function updateQty(name, price, delta) {
   if (soldout[name]) return;
   if (!cart[name]) cart[name]={name,price,qty:0};
@@ -449,7 +449,7 @@ function toggleGift(el){
   el.classList.toggle('selected', opts.gift);
 }
 
-// ══ OPEN/CLOSE CART ══════════════════════════
+// ══ OPEN/CLOSE CART ═══════════════════════════════
 function openCart(){
   renderCartPanel();
   document.getElementById('cartOverlay').classList.add('open');
@@ -483,7 +483,7 @@ function renderCartPanel(){
   document.getElementById('orderBtn').disabled=items.length===0;
 }
 
-// ══ SUBMIT ORDER ═════════════════════════════
+// ══ SUBMIT ORDER ═════════════════════════════════
 function submitOrder(){
   const items=Object.values(cart);
   if(!items.length) return;
@@ -579,7 +579,7 @@ function closeSuccess(){
   updateBottomBar();updateCartCount();renderMenu();
 }
 
-// ══ ADMIN ════════════════════════════════════
+// ══ ADMIN ═════════════════════════════════════════
 function openAdminLogin(){
   if(adminUnlocked){openAdmin();return;}
   document.getElementById('adminContent').innerHTML=`
@@ -645,7 +645,7 @@ function closeAdmin(){
   document.getElementById('adminOverlay').classList.remove('open');
 }
 
-// ══ INIT ═════════════════════════════════════
+// ══ INIT ═════════════════════════════════════════
 buildTabs();renderMenu();updateBottomBar();
 </script>
 </body>
