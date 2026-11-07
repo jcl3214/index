@@ -114,8 +114,9 @@
   .s-amt{font-weight:900;white-space:nowrap;text-align:right;}
   .summary-total{display:flex;justify-content:space-between;align-items:center;font-size:16px;font-weight:900;}
   .summary-total-num{font-size:22px;color:var(--red);}
-  .summary-opts-row{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
-  .opt-tag{font-size:12px;background:#F0F0F0;border-radius:8px;padding:3px 10px;font-weight:700;color:#555;}
+  .summary-opts{margin-top:12px;display:flex;flex-direction:column;gap:6px;}
+  .opt-line{font-size:14px;font-weight:700;color:#333;display:flex;align-items:center;gap:6px;}
+  .opt-line .emoji{font-size:16px;flex-shrink:0;}
 
   .copy-instruction{
     text-align:center;
@@ -448,7 +449,6 @@ function submitOrder(){
     </div>
   `).join('');
 
-  const giftTag = opts.gift ? `<span class="opt-tag">🎁 使用本月來店禮</span>` : '';
   const noteTag = customNote ? `<div style="margin-top:10px;font-size:13px;color:var(--muted);line-height:1.6;"><b>備註：</b>${customNote}</div>` : '';
 
   document.getElementById('orderSummary').innerHTML = `
@@ -463,11 +463,11 @@ function submitOrder(){
       <span>總計</span>
       <span class="summary-total-num">$${total}</span>
     </div>
-    <div class="summary-opts-row">
-      <span class="opt-tag">辣度：${opts.spice}</span>
-      <span class="opt-tag">酸菜：${opts.pickle}</span>
-      <span class="opt-tag">鹹度：${opts.salt}</span>
-      ${giftTag}
+    <div class="summary-opts">
+      <div class="opt-line"><span class="emoji">🌶️</span> 辣度：${opts.spice}</div>
+      <div class="opt-line"><span class="emoji">🥬</span> 酸菜：${opts.pickle}</div>
+      <div class="opt-line"><span class="emoji">🧂</span> 鹹度：${opts.salt}</div>
+      ${opts.gift ? '<div class="opt-line"><span class="emoji">🎁</span> 使用本月來店禮</div>' : ''}
     </div>
     ${noteTag}
   `;
@@ -478,13 +478,22 @@ function submitOrder(){
     `${pad(i.name, maxLen)}  ×${i.qty}   $${i.price*i.qty}`
   ).join('\n');
   const sep='─'.repeat(maxLen+12);
+  const optLines = [
+    `🌶️ 辣度：${opts.spice}`,
+    `🥬 酸菜：${opts.pickle}`,
+    `🧂 鹹度：${opts.salt}`,
+    opts.gift ? '🎁 使用本月來店禮' : '',
+    customNote ? `📝 備註：${customNote}` : ''
+  ].filter(Boolean).join('\n');
+
   lastOrderText = `【健康魯味 訂單】
 ${dateStr} ${timeStr}
 ${sep}
 ${itemLines}
 ${sep}
 總計：$${total}
-辣度：${opts.spice}  酸菜：${opts.pickle}  鹹度：${opts.salt}${opts.gift?'  🎁來店禮':''}${customNote?'\n備註：'+customNote:''}`;
+
+${optLines}`;
 
   closeCart();
   document.getElementById('successModal').classList.add('open');
